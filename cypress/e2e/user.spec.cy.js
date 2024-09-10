@@ -14,7 +14,9 @@ const selectorsList = {
   lastNameField: "[name='lastName']" ,
   dateField: (':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-date-wrapper > .oxd-date-input > .oxd-input') ,
   genericField: ".oxd-input" ,
-  submitButton: "[type='submit']"
+  submitButton: "[type='submit']" ,
+  nationatilityField: "[clear='false']" ,
+  maritalField: "[tabindex='0']"
 }
 
   beforeEach(() => {
@@ -33,6 +35,10 @@ const selectorsList = {
     cy.get(selectorsList.genericField).eq(4).clear().type('CR7')
     cy.get(selectorsList.genericField).eq(5).clear().type('ID2025')
     cy.get(selectorsList.genericField).eq(6).clear().type('01-01/2034')
+    cy.get(selectorsList.nationatilityField).eq(0).click()
+    cy.get(':nth-child(6) > span').click()
+    cy.get(selectorsList.maritalField).eq(1).click()
+    cy.get(':nth-child(3) > span').click()
     cy.get(selectorsList.submitButton).eq(0).click()
     cy.get('body').should('contain', 'Successfully Updated')
   
