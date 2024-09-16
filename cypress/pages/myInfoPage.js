@@ -1,3 +1,5 @@
+import { faker } from "@faker-js/faker"
+
 class MyInfoPage {
 
     selectorsList() {
@@ -14,11 +16,11 @@ class MyInfoPage {
     }
 
     addMyInfoPage() {
-        cy.get(this.selectorsList().firstNameField).clear().type('Cristiano')
-        cy.get(this.selectorsList().lastNameField).clear().type('Ronaldo')
-        cy.get(this.selectorsList().genericField).eq(4).clear().type('CR7')
+        cy.get(this.selectorsList().firstNameField).clear().type(faker.person.firstName())
+        cy.get(this.selectorsList().lastNameField).clear().type(faker.person.lastName())
+        cy.get(this.selectorsList().genericField).eq(4).clear().type(faker.internet.displayName())
 
-        cy.get(this.selectorsList().genericField).eq(5).clear().type('ID2025')
+        cy.get(this.selectorsList().genericField).eq(5).clear().type(faker.person.bio())
         cy.get(this.selectorsList().genericField).eq(6).clear().type('01-01/2034')
         cy.get(this.selectorsList().nationatilityField).eq(0).click()
 
